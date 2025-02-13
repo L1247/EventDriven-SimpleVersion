@@ -1,0 +1,16 @@
+{
+  "name": "GameExample.Scripts",
+  "rootNamespace": "",
+  "references": [
+    "CustomLibrary"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": false,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}
