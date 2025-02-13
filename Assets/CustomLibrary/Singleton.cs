@@ -31,20 +31,20 @@ namespace Scripts.Custom
 
     #endregion
 
-    #region Public Methods
+    #region Protected Methods
 
-        public void Initialize()
+        protected virtual void CustomInitialize() { }
+
+    #endregion
+
+    #region Private Methods
+
+        private void Initialize()
         {
             if (Initialized) return;
             Initialized = true;
             CustomInitialize();
         }
-
-    #endregion
-
-    #region Protected Methods
-
-        protected virtual void CustomInitialize() { }
 
     #endregion
     }
