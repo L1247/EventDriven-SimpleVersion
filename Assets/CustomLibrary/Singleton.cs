@@ -6,7 +6,7 @@ using System;
 
 namespace Scripts.Custom
 {
-    public class Singleton<T> where T : class
+    public class Singleton<T> : SingletonReset where T : class , SingletonReset
     {
     #region Public Variables
 
@@ -17,6 +17,7 @@ namespace Scripts.Custom
                 if (instance != null) return instance;
                 instance = Activator.CreateInstance<T>();
                 (instance as Singleton<T>).Initialize();
+                SingletonReseter.Register(instance);
                 return instance;
             }
         }
@@ -28,6 +29,17 @@ namespace Scripts.Custom
     #region Private Variables
 
         private static T instance;
+
+    #endregion
+
+    #region Public Methods
+
+        public void Reset()
+        {
+            if (Initialized == false) return;
+            Initialized = false;
+            instance    = null;
+        }
 
     #endregion
 
