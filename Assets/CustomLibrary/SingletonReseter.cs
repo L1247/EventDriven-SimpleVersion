@@ -29,6 +29,7 @@ namespace Scripts.Custom
 
         public static void Register<T>(T singleton) where T : class , SingletonReset
         {
+            if (singletons.Contains(singleton)) return;
             singletons.Add(singleton);
         }
 
