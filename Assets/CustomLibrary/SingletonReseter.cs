@@ -17,17 +17,21 @@ namespace Scripts.Custom
 
     #region Public Methods
 
-        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
-        public static void Clear()
-        {
-            foreach (var singletonReset in singletons) singletonReset.Reset();
-            singletons.Clear();
-        }
-
         public static void Register<T>(T singleton) where T : class , SingletonReset
         {
             if (singletons.Contains(singleton)) return;
             singletons.Add(singleton);
+        }
+
+    #endregion
+
+    #region Private Methods
+
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+        private static void Clear()
+        {
+            foreach (var singletonReset in singletons) singletonReset.Reset();
+            singletons.Clear();
         }
 
     #endregion
