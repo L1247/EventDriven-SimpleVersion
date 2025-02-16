@@ -6,7 +6,7 @@ using System;
 
 namespace Scripts.Custom
 {
-    public class Singleton<T> : SingletonReset where T : class , SingletonReset
+    public class Singleton<T> : Resetable , IInitializatable where T : class , Resetable
     {
     #region Public Variables
 
@@ -16,8 +16,8 @@ namespace Scripts.Custom
             {
                 if (instance != null) return instance;
                 instance = Activator.CreateInstance<T>();
-                (instance as Singleton<T>).Initialize();
-                SingletonReseter.Register(instance);
+                ((IInitializatable)instance).Initialize();
+                SingletonHolder.Register(instance);
                 return instance;
             }
         }
@@ -32,17 +32,6 @@ namespace Scripts.Custom
 
     #endregion
 
-    #region Public Methods
-
-        public void Reset()
-        {
-            if (Initialized == false) return;
-            Initialized = false;
-            instance    = null;
-        }
-
-    #endregion
-
     #region Protected Methods
 
         protected virtual void CustomInitialize() { }
@@ -51,11 +40,18 @@ namespace Scripts.Custom
 
     #region Private Methods
 
-        private void Initialize()
+        void IInitializatable.Initialize()
         {
             if (Initialized) return;
             Initialized = true;
             CustomInitialize();
+        }
+
+        void Resetable.Reset()
+        {
+            if (Initialized == false) return;
+            Initialized = false;
+            instance    = null;
         }
 
     #endregion

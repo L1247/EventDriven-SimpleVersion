@@ -19,6 +19,12 @@ namespace Scripts.Custom
 
     #region Public Methods
 
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+        public static void Clear()
+        {
+            events.Clear();
+        }
+
         public static void Raise<T>(Action<T> action) where T : class
         {
             var observerType     = typeof(T).ToString();
@@ -55,16 +61,6 @@ namespace Scripts.Custom
                     events.Add(observerType , objects);
                 }
             }
-        }
-
-    #endregion
-
-    #region Private Methods
-
-        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
-        private static void Clear()
-        {
-            events.Clear();
         }
 
     #endregion
