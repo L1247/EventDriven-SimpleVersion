@@ -14,7 +14,7 @@ namespace GameExample.Scripts
 
         private void Awake()
         {
-            NewEventHandlers();
+            BindEventHandlers();
             Game.Instance.StartGame();
         }
 
@@ -22,9 +22,9 @@ namespace GameExample.Scripts
 
     #region Private Methods
 
-        private void NewEventHandlers()
+        private void BindEventHandlers()
         {
-            EventBus.Subscribe<GainReward_When_DamageDealed>();
+            EventBus.Subscribe<SpawnCharacter_When_GameStarted_EventHandler>();
         }
 
     #endregion
