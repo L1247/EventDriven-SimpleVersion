@@ -1,6 +1,7 @@
 #region
 
 using Scripts.Custom;
+using UnityEngine;
 
 #endregion
 
@@ -15,7 +16,7 @@ namespace GameExample.Scripts.Damage
             var isCritical = CriticalDamageCalculator.CalculateCritical(criticalChance);
             // 暴擊 兩倍傷害
             var finalDamage = isCritical ? damageAmount * 2 : damageAmount;
-            // Debug.Log($"DealDamage: finalDamage: {finalDamage} , isCritical: {isCritical} , damageAmount: {damageAmount}");
+            Debug.Log($"DealDamage: finalDamage: {finalDamage} , isCritical: {isCritical} , damageAmount: {damageAmount}");
             EventBus.Raise<DamageObserver>(_ => _.OnDamageDealed(isCritical , finalDamage));
         }
 

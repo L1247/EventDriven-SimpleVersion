@@ -25,6 +25,7 @@ namespace GameExample.Scripts
         private void BindEventHandlers()
         {
             EventBus.Subscribe<SpawnCharacter_When_GameStarted_EventHandler>();
+            EventBus.Subscribe<GainReward_When_DamageDealed>();
         }
 
     #endregion
