@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace GameExample.Scripts
 {
-    public class Application_GameExample : MonoBehaviour
+    public class Application_GameExample1 : MonoBehaviour
     {
     #region Unity events
 
