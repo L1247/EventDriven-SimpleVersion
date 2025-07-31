@@ -39,5 +39,10 @@ namespace GameExample_2.Scripts.Monsters
         }
 
     #endregion
+
+        public void TakeDamage(int damage)
+        {
+            monster.TakeDamage(damage);
+        }
     }
 }

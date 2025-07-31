@@ -32,9 +32,10 @@ namespace GameExample_2.Scripts.Monsters
     #region Private Methods
 
         [Button]
-        private void TakeDamage(int damage)
+        public void TakeDamage(int damage)
         {
             Hp -= damage;
+            if (Hp < 0) Hp = 0;
             Debug.Log($"Hp: {Hp}");
             EventBus.Raise<MonsterTakeDamageObserver>(_ => _.OnMonsterDamageTaken());
         }

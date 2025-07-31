@@ -1,5 +1,6 @@
 #region
 
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,6 +19,7 @@ namespace GameExample_2.Scripts.UIs
 
     #region Public Methods
 
+        [Button]
         public void UpdateHp(int hp , int maxHp)
         {
             front.fillAmount = (float)hp / maxHp;

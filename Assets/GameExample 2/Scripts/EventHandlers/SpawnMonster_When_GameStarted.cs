@@ -13,6 +13,7 @@ namespace GameExample_2.Scripts.EventHandlers
 
         public void OnGameStarted()
         {
+            // 找到指定怪物資料的血量
             MonsterController.Instance.CreateMonster(100);
         }
 
